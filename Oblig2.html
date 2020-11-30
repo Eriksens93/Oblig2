@@ -24,6 +24,7 @@
         let chosenBar; // Variabel for hvilken stolpe som er valgt
         let inputValue; // Variabel for hva som er skrevet i input-feltet
         // view
+        Chosenbar
         show();
         function show() {
             let svgInnerHtml = '';
@@ -60,6 +61,8 @@
                                 x="${x}" y="${y}" fill="${color}"></rect>`;
         }
     
+        // Endrer farge basert på parametrene
+
         function calcColor(min, max, val) {
             var minHue = 240, maxHue = 0;
             var curPercent = (val - min) / (max - min);
