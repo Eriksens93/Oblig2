@@ -1,25 +1,23 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>Test Suite</title>
     <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.12.0.css">
-</head>
-
-<body>
+    <script src="oblig2.js"></script>
+  </head>
+  <body>
     <div id="qunit"></div>
     <div id="qunit-fixture"></div>
     <script src="https://code.jquery.com/qunit/qunit-2.12.0.js"></script>
-    <script src="oblig2.js"></script>
+    
     <script>
         // model
         let numbers;
-        let chosenBar;
-        let inputValue;
+        let chosenBar;  // Variabel for hvilken stolpe som er valgt
+        let inputValue; // Variabel for hva som er skrevet i input-feltet
 
-        show();
         function show(){
 
         }
@@ -47,9 +45,10 @@
             let expected = [3, 2];
             assert.deepEqual(actual, expected);
         });
+        // vet ikke at det er samme liste
+        // deepEqual brukes bare i array. Fler enn et parameter
+        // Alt telles fra venstre, "posisjon".
 
-        // deepEqual brukes bare i array
-        
         QUnit.test('endre en stolpe', function (assert) {
             numbers = [4, 1, 2]
             chosenBar = 1;
@@ -63,7 +62,7 @@
         QUnit.test('legge til en stolpe', function (assert) {
             numbers = [3, 6, 2];
             inputValue = 9;
-            addBar(inputValue)
+            addBar()
             let actual = numbers;
             let expected = [3, 6, 2, 9];
             assert.deepEqual(actual, expected);

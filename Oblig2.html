@@ -16,19 +16,22 @@
     </div>
     
     <script>
-        // hjelpevariable for både view og controller
+        // hjelpevariabel for både view og controller
         var contentDiv = document.getElementById('content');
     
         // model
         let numbers = [7, 3, 1, 5, 8];
         let chosenBar; // Variabel for hvilken stolpe som er valgt
         let inputValue; // Variabel for hva som er skrevet i input-feltet
+        
         // view
         show();
         function show() {
             let svgInnerHtml = '';
             for (let i = 0; i < numbers.length; i++) {
-                var buttonEnabled = chosenBar ? '' : 'disabled';
+                // buttonEnabled er disabled når ingen er valgt og enablet ellers
+                // "hvis du har en valgt bar så er stringen åpen så betyr det enabled og hvis du ikke har en valgt bar så er den disabled"
+                var buttonEnabled = chosenBar ? '' : 'disabled';    
                 svgInnerHtml += createBar(numbers[i], i + 1);
             }
             contentDiv.innerHTML = `
@@ -45,6 +48,7 @@
                 `;
         }
     
+        // Ingen verdi hvis ingen bar er valgt, når jeg velger (chosenbar) blir det border rundt
         function createBar(number, barNo) {
             let border = 'none';
             if (barNo ==chosenBar) {
@@ -56,6 +60,8 @@
             let height = number * 10;
             let y = 60 - height;
             let color = calcColor(1, 10, barNo);
+
+            // Outline, der jeg har border. Stolpene er lagd av denne commanden.
             return `<rect stroke="${border}"onclick="selectedBar(${barNo})"; width="${width}" height="${height}"
                                 x="${x}" y="${y}" fill="${color}"></rect>`;
         }
@@ -71,7 +77,7 @@
     
        
     </script>
-    Last modified: Monday, 17 August 2020, 1:15 PM
+   
     
 </body>
 </html>
